@@ -14,6 +14,22 @@ public:
 	~DynamicArray()
 	{
 		cout << "Destructor DynamicArray" << endl;
-		delete arr;
+		delete[] arr;
 	}
+};
+
+class Stack{
+public:
+	Stack(){
+		cout << "Constructor Stack" << endl;
+	}
+	~Stack()
+	{
+		cout << "Destructor Stack" << endl;
+	}
+	void virtual push(int n);
+	int virtual pop();
+	void virtual show();
+	void virtual notFull();
+	void virtual notEmpty();
 };
