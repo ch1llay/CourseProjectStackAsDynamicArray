@@ -31,13 +31,12 @@ public:
 	int virtual pop() = 0;
 	void virtual show() = 0;
 	bool notFull() {
-		cout << leftTop << " " << rightTop << endl;
 		return rightTop - leftTop > 1;
 	}
 	bool notEmpty() {
 		return rightTop - leftTop <= d.N;
 	}
-protected:
+public:
 	static DynamicArray d;
 	static inline int leftTop, rightTop;
 };
@@ -46,6 +45,7 @@ class LeftStack:public Stack {
 public:
 	LeftStack() {
 		leftTop = -1;
+		cout << "leftTop 48" << leftTop << endl;
 		cout << "Constructor LeftStack" << endl;
 	}
 	~LeftStack()
@@ -53,10 +53,12 @@ public:
 		cout << "Destructor LeftStack" << endl;
 	}
 	void push(int n) override {
-		if (notFull())
-			d.arr[leftTop++] = n;
-		else
+		if (notFull()) {
+			d.arr[++leftTop] = n;
+		}
+		else {
 			cout << "stack is full";
+		}
 	}
 	int pop() override {
 		if (notEmpty())
@@ -66,7 +68,8 @@ public:
 	}
 	void show() override {
 		cout << "Left stack" << endl;
-		for (int i = leftTop; i > 0; i--) {
+		cout << "left_top " << leftTop << endl;
+		for (int i = leftTop; i > -1; i--) {
 			cout << d.arr[i] << " ";
 		}
 		cout << endl;
@@ -84,7 +87,7 @@ public:
 	}
 	void push(int n) override {
 		if (notFull())
-			d.arr[rightTop--] = n;
+			d.arr[--rightTop] = n;
 		else
 			cout << "stack is full";
 	}
@@ -94,8 +97,8 @@ public:
 		throw std::out_of_range("Stack is empty");
 	}
 	void show() override {
-		cout << "Left stack" << endl;
-		for (int i = rightTop; i < d.N-1; i++) {
+		cout << "Right stack" << endl;
+		for (int i = rightTop; i < d.N; i++) {
 			cout << d.arr[i] << " ";
 		}
 		cout << endl;
