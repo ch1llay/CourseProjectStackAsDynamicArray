@@ -1,21 +1,19 @@
 #include "Classes.h"
 
-DynamicArray Stack::d(10);
+DynamicArray Stack::dynamicArray(10);
 int main() {
 	LeftStack leftStack;
 	RightStack rightStack;
 	try {
 		leftStack.push(1);
+		leftStack.push(2);
+		leftStack.push(3);
 		leftStack.show();
 		rightStack.push(-1);
+		rightStack.push(-2);
 		rightStack.show();
-
-		cout << "Stack::leftTop " << Stack::leftTop << "Stack::rightTop " << Stack::rightTop << endl;
-		for (int i = 0; i < Stack::d.N; i++)
-		{
-			cout << Stack::d.arr[i] << " ";
-		}
 	}
+
 	catch (exception ex) {
 		cout << ex.what() << endl;
 	}
