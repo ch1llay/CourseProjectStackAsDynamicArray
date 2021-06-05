@@ -36,9 +36,6 @@ protected:
 	bool checkIsNotFull() {
 		return rightTop - leftTop > 1;
 	}
-	bool checkIsNotEmpty() {
-		return rightTop - leftTop <= dynamicArray.N;
-	}
 };
 
 class LeftStack:public Stack {
@@ -50,6 +47,9 @@ public:
 	~LeftStack()
 	{
 		cout << "Destructor LeftStack" << endl;
+	}
+	bool checkIsNotEmpty() {
+		return leftTop > -1;
 	}
 	void push(int n) override {
 		if (checkIsNotFull()) {
@@ -82,6 +82,9 @@ public:
 	~RightStack()
 	{
 		cout << "Destructor RightStack" << endl;
+	}
+	bool checkIsNotEmpty() {
+		return rightTop < dynamicArray.N;
 	}
 	void push(int n) override {
 		if (checkIsNotFull())
