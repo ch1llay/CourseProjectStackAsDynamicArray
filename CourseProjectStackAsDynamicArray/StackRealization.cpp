@@ -7,7 +7,7 @@ DynamicArray::DynamicArray(int n) {
 }
 DynamicArray::~DynamicArray(){
 	cout << "Destructor DynamicArray" << endl;
-	delete[] arr;
+	delete[] arr; // очищение памяти массива
 }
 
 Stack::Stack() {
@@ -18,11 +18,11 @@ Stack::~Stack()
 	cout << "Destructor Stack" << endl;
 }
 bool Stack::checkIsNotFull() {
-	return rightTop - leftTop > 1;
+	return rightTop - leftTop > 1; 
 }
 
 LeftStack::LeftStack() {
-	leftTop = -1;
+	leftTop = -1; // вершина левого стека равна -1
 	cout << "Constructor LeftStack" << endl;
 }
 LeftStack::~LeftStack()
@@ -35,7 +35,7 @@ bool LeftStack::checkIsNotEmpty() {
 void LeftStack::push(int n) {
 	if (checkIsNotFull()) {
 		cout << "pushing in left stack " << n << endl;
-		dynamicArray.arr[++leftTop] = n;
+		dynamicArray.arr[++leftTop] = n; // добавление элемента в стек, после увеличить вершину
 	}
 	else {
 		cout << "couldn't push " << n << " - stack is full" << endl;
@@ -56,7 +56,7 @@ void LeftStack::show() {
 }
 
 RightStack::RightStack() {
-	rightTop = dynamicArray.N;
+	rightTop = dynamicArray.N; // вершина правого стека равна размерности массива
 	cout << "Constructor RightStack" << endl;
 }
 RightStack::~RightStack()
