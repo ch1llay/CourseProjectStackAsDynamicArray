@@ -30,7 +30,7 @@ public:
 	bool checkIsNotEmpty();
 	void push(int n) override;
 	int pop() override;
-	void show();
+	void show() override;
 };
 class RightStack :public Stack {
 public:
@@ -39,5 +39,5 @@ public:
 	bool checkIsNotEmpty();
 	void push(int n) override;
 	int pop() override;
-	void show();
+	void show() override;
 };

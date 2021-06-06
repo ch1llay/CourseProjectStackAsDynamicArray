@@ -7,6 +7,7 @@ DynamicArray::DynamicArray(int n) {
 }
 DynamicArray::~DynamicArray(){
 	cout << "Destructor DynamicArray" << endl;
+	delete[] arr;
 }
 
 Stack::Stack() {
@@ -33,17 +34,18 @@ bool LeftStack::checkIsNotEmpty() {
 }
 void LeftStack::push(int n) {
 	if (checkIsNotFull()) {
+		cout << "pushing in left stack " << n << endl;
 		dynamicArray.arr[++leftTop] = n;
 	}
 	else {
-		cout << "stack is full";
+		cout << "couldn't push " << n << " - stack is full" << endl;
 	}
 }
 int LeftStack::pop() {
-	if (checkIsNotEmpty())
-		return dynamicArray.arr[--leftTop];
-	else
-		throw;
+	if (checkIsNotEmpty()) {
+		cout << "element " << dynamicArray.arr[leftTop] << " was retrieved" << endl;
+		return dynamicArray.arr[leftTop--];
+	}
 }
 void LeftStack::show() {
 	cout << "Left stack" << " [";
@@ -65,15 +67,17 @@ bool RightStack::checkIsNotEmpty() {
 	return rightTop < dynamicArray.N;
 }
 void RightStack::push(int n) {
+	cout << "pushing in right stack " << n << endl;
 	if (checkIsNotFull())
 		dynamicArray.arr[--rightTop] = n;
 	else
-		cout << "stack is full";
+		cout << "couldn't push " << n << " - stack is full" << endl;
 }
 int RightStack::pop()  {
-	if (checkIsNotEmpty())
-		return dynamicArray.arr[--rightTop];
-	throw std::out_of_range("Stack is empty");
+	if (checkIsNotEmpty()) {
+		cout << "element " << dynamicArray.arr[rightTop] << " was retrieved" << endl;
+		return dynamicArray.arr[rightTop++];
+	}
 }
 void RightStack::show() {
 	cout << "Right stack" << " [";
