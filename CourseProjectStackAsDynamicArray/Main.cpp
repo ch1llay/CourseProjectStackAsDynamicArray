@@ -1,4 +1,4 @@
-#include "Classes.h"
+#include "StackHeader.h"
 
 DynamicArray Stack::dynamicArray(10);
 int main() {
